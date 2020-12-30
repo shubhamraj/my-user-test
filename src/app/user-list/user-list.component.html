@@ -1,0 +1,104 @@
+<div class="user-list mt-2">
+    <div class="row">
+      <div class="mt-5 mb-5 col-10"><h1>User List</h1></div>
+      <div class="mt-5 mb-3 col-2 pt-4">
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">Add User</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-8">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Birth Date</th>
+                  <th scope="col">Languages</th>
+                  <th scope="col">Gender</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of userList">
+                  <th scope="row">{{user.Name}}</th>
+                  <td>{{user.DOB}}</td>
+                  <td>{{user.Languages}}</td>
+                  <td>{{user.Gender}}</td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+      <div class="col-4 bg-light border">
+          <div class="progress mr-1 mt-5">
+              <div class="progress-bar progress-bar-striped bg-secondary" id="progressBar" role="progressbar"[ngStyle]="{'width': TotalUserCount + '%'}" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" #progressBar></div>
+          </div>
+          <div class="mt-5 mb-5 text-center">
+              <span><h4>Female Users</h4></span><br>
+              <span><h3>{{FemaleGenderCount}}</h3></span><br>
+              <span><h4>Male Users</h4></span><br>
+              <span><h3>{{MaleGenderCount}}</h3></span>
+          </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+
+        <form id="userData">
+
+          <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" class="form-control" id="name" placeholder="Enter Full Name" name="name">
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="date">Date</label>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="date"/>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="languages">Select Languages</label>
+            <label for="lan1" class="checkbox-inline ml-2">
+              <input type="checkbox" name="lan1" value="English">
+              English
+            </label>
+            <label for="lan2"  class="checkbox-inline ml-2">
+              <input type="checkbox" name="lan2" value="Hindi">Hindi
+            </label>
+            <label for="lan3" class="checkbox-inline ml-2">
+              <input type="checkbox" name="lan3" value="Marathi">Marathi
+            </label>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Gender:</label>
+            <div class="radio">
+              <label><input type="radio" name="gender" value="Male" checked>Male</label>
+            </div>
+            <div class="radio">
+              <label><input type="radio" name="gender" value="Female">Female</label>
+            </div>
+          </div>
+          
+        </form>
+
+      </div>
+      
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary"   (click)="onSave()">Save</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
