@@ -1,7 +1,8 @@
 
 ## Run Server 
 1. npm run json:server
-Run application. 
+
+## Run application. 
 1. npm install --save
 2.npm start.
 
